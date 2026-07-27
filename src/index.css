@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", "Nunito", "Inter", sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  
+  /* Geometric Balance Custom Palette */
+  --color-gold-50: #fdfbf7;
+  --color-gold-100: #faf3e0;
+  --color-gold-200: #e8e2d9;
+  --color-gold-500: #c5a059;
+  --color-gold-600: #c5a059;
+  --color-gold-700: #a3821c;
+
+  --color-cookie-50: #FAF8F5;
+  --color-cookie-100: #F3EFE8;
+  --color-cookie-200: #E8E2D9;
+  --color-cookie-500: #c5a059;
+  --color-cookie-600: #3D2B1F;
+  --color-cookie-800: #6B5E55;
+  --color-cookie-900: #3D2B1F;
+  --color-cookie-950: #3D2B1F;
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cookie-50);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-cookie-200);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cookie-500);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Sticky nav offset */
+}
+
+/* Custom cursor or fine touches */
+body {
+  background-color: var(--color-cookie-50);
+  color: var(--color-cookie-950);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(250, 246, 240, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(138, 90, 54, 0.08);
+}
+
+.glass-dark {
+  background: rgba(51, 29, 13, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Pulse keyframes for decorative animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 9s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float 4.5s ease-in-out infinite;
+}

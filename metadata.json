@@ -1,0 +1,6 @@
+{
+  "name": "SofiaAtikah Cookies",
+  "description": "Premium, luxurious freshly-baked cookies by SofiaGPMG. Handcrafted cookie experience with a modern bilingual interface, interactive cart, and elegant product catalog.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
