@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { products } from '../products';
-import { Star, ShoppingBag, Check, Sparkles } from 'lucide-react';
+import { Star, ShoppingBag, Check, Sparkles, Download } from 'lucide-react';
+import { downloadCatalogPDF } from '../utils/downloadCatalog';
 import { motion, AnimatePresence } from 'motion/react';
 import { Product } from '../types';
 
 export const Products: React.FC = () => {
-  const { t, addToCart } = useApp();
+  const { t, addToCart, language } = useApp();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [addingId, setAddingId] = useState<string | null>(null);
 
@@ -41,7 +42,7 @@ export const Products: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-10 sm:mb-12">
           <span className="font-sans font-bold text-xs sm:text-sm tracking-widest text-gold-600 uppercase block">
             {t('products.title')}
           </span>
@@ -49,6 +50,17 @@ export const Products: React.FC = () => {
             {t('products.subtitle')}
           </h2>
           <div className="h-1 w-20 bg-cookie-500 mx-auto rounded-full mt-4" />
+
+          <div className="pt-2">
+            <button
+              onClick={() => downloadCatalogPDF(language)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold-100 hover:bg-gold-200 text-gold-900 border border-gold-300 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-sm cursor-pointer"
+              id="products-download-catalog-btn"
+            >
+              <Download className="w-4 h-4 text-gold-700" />
+              <span>{t('btn.downloadCatalog')}</span>
+            </button>
+          </div>
         </div>
 
         {/* Filter Navigation */}
@@ -100,6 +112,9 @@ export const Products: React.FC = () => {
                       alt={t(product.nameKey)}
                       className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&q=80&w=800';
+                      }}
                     />
                     
                     {/* Dark gradient vignette on overlay */}

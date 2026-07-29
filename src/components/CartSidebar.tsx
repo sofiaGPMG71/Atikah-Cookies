@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { X, Plus, Minus, Trash2, CreditCard, Cookie } from 'lucide-react';
+import { X, Plus, Minus, Trash2, CreditCard, Cookie, Download } from 'lucide-react';
+import { downloadOrderReceipt } from '../utils/downloadCatalog';
 import { motion, AnimatePresence } from 'motion/react';
 
 export const CartSidebar: React.FC = () => {
@@ -113,6 +114,9 @@ export const CartSidebar: React.FC = () => {
                         alt={t(item.product.nameKey)}
                         className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
                         referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          e.currentTarget.src = 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&q=80&w=800';
+                        }}
                       />
                     </div>
 
@@ -211,10 +215,13 @@ export const CartSidebar: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Checkout & Clear Buttons */}
+                {/* Checkout & Download Receipt Buttons */}
                 <div className="space-y-2 pt-2">
                   <button
-                    onClick={handleCheckout}
+                    onClick={() => {
+                      downloadOrderReceipt(cart, totalAmount, language);
+                      handleCheckout();
+                    }}
                     disabled={isCheckingOut}
                     className="w-full relative group flex items-center justify-center gap-2 py-3.5 bg-cookie-600 hover:bg-cookie-700 text-white font-sans font-bold text-sm rounded-2xl shadow-md active:scale-[0.98] transition-all cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
                   >
@@ -223,12 +230,21 @@ export const CartSidebar: React.FC = () => {
                   </button>
 
                   <button
+                    onClick={() => downloadOrderReceipt(cart, totalAmount, language)}
+                    className="w-full flex items-center justify-center gap-2 py-2.5 bg-gold-50 hover:bg-gold-100 border border-gold-200 text-gold-900 font-sans text-xs font-semibold rounded-xl transition-all cursor-pointer"
+                    id="cart-download-receipt-btn"
+                  >
+                    <Download className="h-3.5 w-3.5 text-gold-700" />
+                    <span>{t('btn.downloadReceipt')}</span>
+                  </button>
+
+                  <button
                     onClick={() => {
                       if (window.confirm('Are you sure you want to clear your cookie basket?')) {
                         clearCart();
                       }
                     }}
-                    className="w-full text-center py-2.5 text-cookie-400 hover:text-red-500 font-sans text-xs font-semibold hover:bg-cookie-100/30 rounded-xl transition-all cursor-pointer"
+                    className="w-full text-center py-2 text-cookie-400 hover:text-red-500 font-sans text-xs font-semibold hover:bg-cookie-100/30 rounded-xl transition-all cursor-pointer"
                   >
                     {t('btn.clearCart')}
                   </button>

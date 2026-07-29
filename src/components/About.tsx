@@ -70,6 +70,9 @@ export const About: React.FC = () => {
                     alt="Artisanal bakery prep ingredients flour"
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&q=80&w=600';
+                    }}
                   />
                 </motion.div>
               </div>
@@ -86,6 +89,9 @@ export const About: React.FC = () => {
                     alt="Fresh hot oatmeal cookie close-up"
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1558961314-bc8a4d49ec2c?auto=format&fit=crop&q=80&w=400';
+                    }}
                   />
                 </motion.div>
               </div>
@@ -102,6 +108,9 @@ export const About: React.FC = () => {
                     alt="Artisan cookie platter dessert table"
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&q=80&w=800';
+                    }}
                   />
                 </motion.div>
               </div>

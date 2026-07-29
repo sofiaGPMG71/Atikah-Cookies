@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
-import { Cookie, ShoppingCart, Languages, Menu, X, ChevronDown } from 'lucide-react';
+import { Cookie, ShoppingCart, Languages, Menu, X, ChevronDown, Download } from 'lucide-react';
+import { downloadCatalogPDF } from '../utils/downloadCatalog';
 import { motion, AnimatePresence } from 'motion/react';
 import { Language } from '../types';
 
@@ -113,7 +114,18 @@ export const Navbar: React.FC = () => {
             </nav>
 
             {/* Utility buttons */}
-            <div className="flex items-center gap-3" id="navbar-actions">
+            <div className="flex items-center gap-2 sm:gap-3" id="navbar-actions">
+              {/* Download Catalogue Button */}
+              <button
+                onClick={() => downloadCatalogPDF(language)}
+                className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-cookie-200 bg-white/70 hover:bg-cookie-600 hover:text-white hover:border-cookie-600 text-cookie-900 text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer shadow-sm group"
+                title="Download Menu Catalogue (PDF)"
+                id="navbar-download-menu-btn"
+              >
+                <Download className="h-4 w-4 text-cookie-600 group-hover:text-white transition-colors" />
+                <span>{language === 'ms' ? 'Katalog' : 'Catalogue'}</span>
+              </button>
+
               {/* Language Selector Dropdown */}
               <div className="relative">
                 <button
@@ -230,6 +242,18 @@ export const Navbar: React.FC = () => {
                     </button>
                   );
                 })}
+
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    downloadCatalogPDF(language);
+                  }}
+                  className="w-full text-left px-4 py-3 rounded-xl font-sans text-sm font-semibold tracking-wide transition-all bg-gold-100 text-gold-900 border border-gold-300 hover:bg-gold-200 flex items-center gap-2 mt-2"
+                  id="mobile-download-menu-btn"
+                >
+                  <Download className="h-4 w-4 text-gold-700" />
+                  <span>{t('btn.downloadCatalog')}</span>
+                </button>
               </div>
             </motion.div>
           )}

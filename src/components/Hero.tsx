@@ -1,10 +1,11 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
-import { Sparkles, ShoppingBag, ArrowRight, Heart, Cookie } from 'lucide-react';
+import { Sparkles, ShoppingBag, ArrowRight, Heart, Cookie, Download } from 'lucide-react';
+import { downloadCatalogPDF } from '../utils/downloadCatalog';
 import { motion } from 'motion/react';
 
 export const Hero: React.FC = () => {
-  const { t } = useApp();
+  const { t, language } = useApp();
 
   const handleScrollTo = (id: string) => {
     const element = document.getElementById(id);
@@ -73,13 +74,13 @@ export const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4"
+              className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-4"
               id="hero-cta-buttons"
             >
               {/* Shop Now Button */}
               <button
                 onClick={() => handleScrollTo('products')}
-                className="w-full sm:w-auto px-10 py-5 bg-cookie-600 text-white rounded-lg font-bold tracking-wider hover:shadow-2xl hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center group cursor-pointer"
+                className="w-full sm:w-auto px-8 py-4 bg-cookie-600 text-white rounded-xl font-bold text-sm tracking-wider hover:shadow-2xl hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center group cursor-pointer"
               >
                 <span>{t('btn.shopNow')}</span>
                 <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,12 +88,14 @@ export const Hero: React.FC = () => {
                 </svg>
               </button>
 
-              {/* Explore Button */}
+              {/* Download Menu Catalogue Button */}
               <button
-                onClick={() => handleScrollTo('products')}
-                className="w-full sm:w-auto px-10 py-5 border-2 border-cookie-950/10 text-cookie-950 rounded-lg font-bold tracking-wider hover:bg-cookie-950/5 active:scale-95 transition-all cursor-pointer"
+                onClick={() => downloadCatalogPDF(language)}
+                className="w-full sm:w-auto px-6 py-4 bg-gold-100 hover:bg-gold-200 border-2 border-gold-300 text-gold-900 rounded-xl font-bold text-sm tracking-wide transition-all cursor-pointer flex items-center justify-center gap-2 shadow-sm"
+                id="hero-download-menu-btn"
               >
-                {t('btn.explore')}
+                <Download className="w-4 h-4 text-gold-700" />
+                <span>{t('btn.downloadCatalog')}</span>
               </button>
             </motion.div>
           </div>
@@ -118,6 +121,9 @@ export const Hero: React.FC = () => {
                   alt="Premium Golden Chocolate Chip Cookies SofiaAtikah"
                   className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1558961314-bc8a4d49ec2c?auto=format&fit=crop&q=80&w=1000';
+                  }}
                 />
                 
                 {/* Overlay card for a touch of elegance */}

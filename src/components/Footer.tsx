@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
-import { Cookie, Phone, Mail, MapPin, ArrowUp, Facebook, Instagram, MessageCircle } from 'lucide-react';
+import { Cookie, Phone, Mail, MapPin, ArrowUp, Facebook, Instagram, MessageCircle, Download } from 'lucide-react';
+import { downloadCatalogPDF } from '../utils/downloadCatalog';
 import { motion, AnimatePresence } from 'motion/react';
 
 export const Footer: React.FC = () => {
-  const { t } = useApp();
+  const { t, language } = useApp();
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   // Monitor scroll for Back to Top visibility
@@ -116,6 +117,10 @@ export const Footer: React.FC = () => {
                 </button>
                 <button onClick={() => handleScrollTo('faq')} className="text-left hover:text-gold-500 transition-colors cursor-pointer w-fit">
                   {t('nav.faq')}
+                </button>
+                <button onClick={() => downloadCatalogPDF(language)} className="text-left text-gold-400 hover:text-gold-300 transition-colors cursor-pointer w-fit flex items-center gap-1.5 font-semibold">
+                  <Download className="h-3.5 w-3.5" />
+                  <span>{t('btn.downloadCatalog')}</span>
                 </button>
               </nav>
             </div>

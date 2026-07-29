@@ -20,6 +20,9 @@ export const translations = {
     "btn.submitting": "Sending...",
     "btn.submit": "Send Message",
     "btn.viewCart": "View Cart",
+    "btn.downloadCatalog": "Download Menu Catalogue",
+    "btn.downloadReceipt": "Download Order Receipt",
+    "btn.downloadAppCode": "Export App Source Code",
     "btn.close": "Close",
     "btn.clearCart": "Clear Cart",
     "toast.addedToCart": "Successfully added {name} to your cart!",
@@ -90,8 +93,8 @@ export const translations = {
     "cookie.peanut_butter.desc": "For peanut lovers! Savory peanut butter dough swirled with sea salt flakes and roasted chopped peanuts.",
     "cookie.oatmeal_raisin.name": "Healthy Oatmeal Raisin",
     "cookie.oatmeal_raisin.desc": "Wholesome rolled oats blended with organic cinnamon spice and plump, sweet premium sun-dried California raisins.",
-    "cookie.macadamia.name": "White Chocolate Macadamia",
-    "cookie.macadamia.desc": "Buttery, nutty perfection featuring rich buttery macadamia nuts paired with premium sweet white chocolate chunks.",
+    "cookie.macadamia.name": "Zen Matcha White Chocolate",
+    "cookie.macadamia.desc": "Infused with premium Japanese Uji matcha green tea, balanced elegantly with sweet white chocolate buttons.",
 
     // Testimonials
     "testimonials.title": "Testimonials",
@@ -169,6 +172,9 @@ export const translations = {
     "btn.submitting": "Menghantar...",
     "btn.submit": "Hantar Mesej",
     "btn.viewCart": "Lihat Bakul",
+    "btn.downloadCatalog": "Muat Turun Katalog Menu",
+    "btn.downloadReceipt": "Muat Turun Resit Pesanan",
+    "btn.downloadAppCode": "Eksport Kod Sumber App",
     "btn.close": "Tutup",
     "btn.clearCart": "Kosongkan Bakul",
     "toast.addedToCart": "Berjaya menambahkan {name} ke dalam bakul anda!",
@@ -239,8 +245,8 @@ export const translations = {
     "cookie.peanut_butter.desc": "Khusus untuk pencinta kacang! Mentega kacang berkrim diputar bersama kepingan garam laut dan kacang rangup.",
     "cookie.oatmeal_raisin.name": "Healthy Oatmeal Raisin",
     "cookie.oatmeal_raisin.desc": "Gabungan sihat oat gulung, kayu manis organik, dan kismis California premium yang manis dan ranum.",
-    "cookie.macadamia.name": "White Chocolate Macadamia",
-    "cookie.macadamia.desc": "Keenakan mentega dengan kacang makadamia yang berlemak digabungkan bersama coklat putih premium.",
+    "cookie.macadamia.name": "Zen Matcha White Chocolate",
+    "cookie.macadamia.desc": "Diaroma dengan teh hijau matcha Uji Jepun tulen, diimbangi manisnya kepingan coklat putih premium.",
 
     // Testimoni
     "testimonials.title": "Testimoni",

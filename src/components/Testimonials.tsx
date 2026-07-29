@@ -99,6 +99,9 @@ export const Testimonials: React.FC = () => {
                     alt={current.name}
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200&h=200';
+                    }}
                   />
                 </div>
                 {/* Micro Quote Badge */}
